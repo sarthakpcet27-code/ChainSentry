@@ -1,0 +1,8 @@
+﻿<svg width="140" height="22" viewBox="0 0 140 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Short proportional signature square box matched to font height -->
+  <rect x="0.75" y="1.5" width="18.5" height="18.5" rx="4" stroke="white" stroke-width="1.5" fill="none"/>
+  <!-- ChainSentry Brand Name -->
+  <text x="27" y="16.5" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="-0.3">ChainSentry</text>
+  <!-- AI Brand Tag -->
+  <text x="105" y="16.5" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="400" fill="#ffffff" fill-opacity="0.6">AI</text>
+</svg>

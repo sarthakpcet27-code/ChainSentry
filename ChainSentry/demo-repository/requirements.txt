@@ -1,0 +1,8 @@
+﻿# Demo Vulnerable App - Python Dependencies
+# Planted signals for ChainSentry testing
+
+flask==2.3.0
+requests==2.28.0
+reqeusts==0.0.1
+private-config-loader==1.0.0
+urllib3>=1.26.0

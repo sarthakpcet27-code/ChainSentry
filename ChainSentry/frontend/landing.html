@@ -1,0 +1,2029 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>ChainSentry AI — Software Supply Chain Security &amp; AI Auto-Remediation</title>
+    <meta name="title" content="ChainSentry AI — Software Supply Chain Security &amp; AI Auto-Remediation">
+    <meta name="description" content="ChainSentry AI: Automated Software Supply Chain Security Analyzer. Identify risky dependencies, typosquatting indicators, build provenance flaws, and synthesize 1-click AI remediation patches.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://127.0.0.1:8000">
+    <meta property="og:title" content="ChainSentry AI — Software Supply Chain Security &amp; AI Auto-Remediation">
+    <meta property="og:description" content="Automated Software Supply Chain Security Analyzer &amp; AI Auto-Remediation Engine.">
+    <meta property="og:image" content="/images/logo.svg">
+    <script type="module" crossorigin="" src="/static/landing.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/static/writemate.css">
+    <style>
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Auto-Moving Infinite Marquee Animation for Ecosystems */
+      @keyframes marquee-glide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .marquee-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 12px 0 20px 0;
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      }
+
+      .marquee-track {
+        display: flex;
+        gap: 20px;
+        width: max-content;
+        animation: marquee-glide 38s linear infinite;
+        will-change: transform;
+      }
+
+      .marquee-track:hover,
+      .marquee-wrapper:hover .marquee-track {
+        animation-play-state: running !important;
+      }
+
+      /* Auto-Moving Visual Scrollbar Track & Thumb */
+      .moving-scrollbar-track {
+        width: 100%;
+        max-width: 440px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 9999px;
+        margin: 22px auto 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .moving-scrollbar-thumb {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 32%;
+        background: #ffffff;
+        border-radius: 9999px;
+        box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
+        animation: moving-thumb 34s ease-in-out infinite;
+      }
+
+      @keyframes moving-thumb {
+        0% { left: 0%; }
+        50% { left: 68%; }
+        100% { left: 0%; }
+      }
+
+      .ecosystem-card {
+        flex: 0 0 230px;
+        min-width: 230px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 28px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        border-radius: 14px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+        transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        user-select: none;
+      }
+
+      .ecosystem-card:hover {
+        border-color: rgba(255, 255, 255, 0.32);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65);
+      }
+
+      .ecosystem-icon-box {
+        width: 54px;
+        height: 54px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        transition: all 0.2s ease;
+      }
+
+      .ecosystem-card:hover .ecosystem-icon-box {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.22);
+      }
+
+      .ecosystem-name {
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 17px;
+        letter-spacing: -0.015em;
+        margin-bottom: 4px;
+      }
+
+      .ecosystem-desc {
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 12px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .ecosystem-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 9px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        color: rgba(255, 255, 255, 0.55);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 11px;
+        letter-spacing: 0.02em;
+        transition: all 0.2s ease;
+      }
+
+      .ecosystem-card:hover .ecosystem-badge {
+        color: rgba(255, 255, 255, 0.85);
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      /* Professional Cybersecurity Feature Cards with Clean White Border */
+      .usecase-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.006) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        border-radius: 14px;
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
+      }
+
+      .usecase-card:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+      }
+
+      .usecase-icon-box {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: #000000;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        transition: all 0.2s ease;
+      }
+
+      .usecase-card:hover .usecase-icon-box {
+        background: #18181b;
+        border-color: rgba(255, 255, 255, 0.6);
+        color: #ffffff;
+      }
+
+      .usecase-card-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: -0.015em;
+        line-height: 1.35;
+        margin-bottom: 8px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .usecase-card-desc {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.55;
+        margin-bottom: 20px;
+        flex: 1;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .usecase-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        width: fit-content;
+      }
+
+      .usecase-link svg {
+        transition: transform 0.2s ease;
+      }
+
+      .usecase-link:hover {
+        color: #ffffff;
+      }
+
+      .usecase-link:hover svg {
+        transform: translateX(3px);
+      }
+
+      /* Interactive Terminal Horizontal Structure for Core Capabilities */
+      .capabilities-terminal-bar {
+        width: 100%;
+        background: #09090b;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 12px;
+        padding: 16px 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        user-select: none;
+        outline: none;
+      }
+
+      .capabilities-terminal-bar:hover {
+        border-color: rgba(255, 255, 255, 0.55);
+        background: #121215;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 255, 255, 0.06);
+        transform: translateY(-1px);
+      }
+
+      .terminal-bar-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .terminal-dots {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .terminal-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .terminal-dot.red { background: #ff5f56; }
+      .terminal-dot.yellow { background: #ffbd2e; }
+      .terminal-dot.green { background: #27c93f; }
+
+      .terminal-prompt {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+
+      .terminal-dollar {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .terminal-title {
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .terminal-cursor {
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        animation: terminal-blink 1s step-end infinite;
+      }
+
+      @keyframes terminal-blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      .terminal-bar-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .terminal-action-hint {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.2s ease;
+      }
+
+      .capabilities-terminal-bar:hover .terminal-action-hint {
+        color: #ffffff;
+      }
+
+      .terminal-chevron {
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .capabilities-terminal-bar[aria-expanded="true"] .terminal-chevron {
+        transform: rotate(180deg);
+      }
+
+      .capabilities-content {
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .capabilities-content.is-open {
+        display: block !important;
+        animation: terminal-expand 0.35s ease-out forwards;
+      }
+
+      @keyframes terminal-expand {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Why DeepScan 3-Column Info Cards */
+      .why-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.008) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        border-radius: 14px;
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+      }
+
+      .why-card:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+      }
+
+      .why-icon-box {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: #000000;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
+
+      .why-card:hover .why-icon-box {
+        background: #18181b;
+        border-color: rgba(255, 255, 255, 0.6);
+        color: #ffffff;
+      }
+
+      .why-card-title {
+        font-size: 19px;
+        font-weight: 600;
+        color: #ffffff !important;
+        letter-spacing: -0.015em;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .why-card-desc {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.78) !important;
+        line-height: 1.6;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      /* Premium Cybersecurity Scan Repository Button */
+      .scan-repo-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        color: #09090b;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        padding: 0 28px;
+        height: 48px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+        cursor: pointer;
+        user-select: none;
+        line-height: 1;
+      }
+
+      .scan-repo-btn:hover {
+        background-color: #f4f4f5;
+        border-color: #d4d4d8;
+        color: #000000;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+      }
+
+      .scan-repo-btn:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      }
+
+      /* Secondary CTA Button - Identical height, alignment, and subtle cyber border */
+      .cta-secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.9);
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        padding: 0 28px;
+        height: 48px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        text-decoration: none;
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+        cursor: pointer;
+        user-select: none;
+        line-height: 1;
+      }
+
+      .cta-secondary-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.45);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .cta-secondary-btn:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Bottom CTA Section */
+      .bottom-cta-section {
+        background-color: #050507;
+        padding: 72px 24px 64px 24px;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .bottom-cta-container {
+        max-width: 680px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+        text-align: center;
+      }
+
+      .bottom-cta-heading {
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-size: clamp(1.85rem, 3.6vw, 2.4rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin: 0 0 14px 0;
+        text-align: center;
+        max-width: 620px;
+      }
+
+      .bottom-cta-subtext {
+        color: rgba(255, 255, 255, 0.72);
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+        line-height: 1.6;
+        margin: 0 0 28px 0;
+        text-align: center;
+        max-width: 560px;
+      }
+
+      .bottom-cta-buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      /* Minimal, Balanced Footer Section */
+      .site-footer {
+        background-color: #000000;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 56px 24px 36px 24px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .site-footer-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .footer-nav-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 36px;
+        width: 100%;
+        margin: 0 auto;
+        padding-bottom: 40px;
+      }
+
+      @media (max-width: 768px) {
+        .footer-nav-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 32px;
+          max-width: 480px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-nav-grid {
+          grid-template-columns: 1fr;
+          gap: 26px;
+          max-width: 280px;
+        }
+        .bottom-cta-buttons {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .scan-repo-btn,
+        .cta-secondary-btn {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-col-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        text-align: center;
+      }
+
+      .footer-col-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 11px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-nav-link {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.62);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        line-height: 1.4;
+        text-align: center;
+      }
+
+      .footer-nav-link:hover {
+        color: #ffffff;
+      }
+
+      .footer-bottom-bar {
+        padding-top: 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 6px;
+      }
+
+      .footer-bottom-copy {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 13px;
+        line-height: 1.4;
+        margin: 0;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .footer-bottom-sub {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        margin: 0;
+        text-align: center;
+      }
+
+      /* Core Features / What You Get 2-Column Grid */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 22px;
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .feature-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 28px;
+        }
+      }
+
+      .feature-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.006) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        border-radius: 14px;
+        padding: 34px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
+      }
+
+      .feature-card:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+      }
+
+      .feature-icon-box {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: #000000;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 22px;
+        transition: all 0.2s ease;
+      }
+
+      .feature-card:hover .feature-icon-box {
+        background: #18181b;
+        border-color: rgba(255, 255, 255, 0.6);
+        color: #ffffff;
+      }
+
+      .feature-card-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffffff !important;
+        letter-spacing: -0.015em;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .feature-card-desc {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.72) !important;
+        line-height: 1.6;
+        margin-bottom: 26px;
+        flex: 1;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .feature-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        width: fit-content;
+      }
+
+      .feature-card-link svg {
+        transition: transform 0.2s ease;
+      }
+
+      .feature-card:hover .feature-card-link {
+        color: #ffffff;
+      }
+
+      .feature-card:hover .feature-card-link svg {
+        transform: translateX(4px);
+      }
+
+      /* Three Lines Menu Button (Clean, Icon-Only) */
+      .nav-menu-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 10px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        color: #ffffff;
+      }
+
+      .nav-menu-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.45);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+      }
+
+      .hamburger-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 20px;
+        height: 14px;
+      }
+
+      .hamburger-line {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #ffffff;
+        border-radius: 9999px;
+        transition: all 0.2s ease;
+      }
+
+      /* Vertical Navigation Drawer (Clean, Minimal, Professional) */
+      .vertical-nav-drawer {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        justify-content: flex-end;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .vertical-nav-drawer.active {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .vertical-nav-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .vertical-nav-panel {
+        position: relative;
+        width: 100%;
+        max-width: 380px;
+        height: 100%;
+        background: #09090b;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px 28px;
+        box-shadow: -16px 0 50px rgba(0, 0, 0, 0.85);
+        transform: translateX(100%);
+        transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 10;
+      }
+
+      @media (max-width: 480px) {
+        .vertical-nav-panel {
+          max-width: 100%;
+          padding: 20px 20px;
+        }
+      }
+
+      .vertical-nav-drawer.active .vertical-nav-panel {
+        transform: translateX(0);
+      }
+
+      .vertical-nav-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-close-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 9999px;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .nav-close-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+      }
+
+      .vertical-nav-body {
+        padding: 24px 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .vertical-nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .vertical-nav-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .vertical-nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        padding: 16px 2px;
+        transition: all 0.2s ease;
+      }
+
+      .vertical-nav-text {
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: -0.015em;
+        transition: all 0.2s ease;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        flex: 1;
+      }
+
+      .vertical-nav-arrow {
+        color: rgba(255, 255, 255, 0.35);
+        transition: all 0.2s ease;
+      }
+
+      .vertical-nav-link:hover .vertical-nav-text,
+      .vertical-nav-link:active .vertical-nav-text {
+        color: #ffffff;
+        transform: translateX(4px);
+      }
+
+      .vertical-nav-link:hover .vertical-nav-arrow,
+      .vertical-nav-link:active .vertical-nav-arrow {
+        color: #ffffff;
+        transform: translateX(3px);
+      }
+
+      .vertical-nav-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 16px;
+      }
+
+      .vertical-nav-meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.42);
+        letter-spacing: 0.01em;
+      }
+
+      /* Classic WriteMate FAQ Styling with Elevated Answer Box */
+      .faq-btn {
+        transition: all 0.2s ease;
+      }
+      .faq-btn:hover h3 {
+        color: #ffffff;
+      }
+      .faq-btn:hover .faq-arrow {
+        color: #ffffff;
+      }
+      .faq-arrow {
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+      }
+      .faq-ans {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #d4d4d8;
+        padding-top: 4px;
+        animation: faqFadeIn 0.22s ease forwards;
+      }
+      .faq-ans.hidden {
+        display: none;
+      }
+      .faq-ans:not(.hidden) {
+        display: block;
+      }
+      @keyframes faqFadeIn {
+        from { opacity: 0; transform: translateY(-3px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .faq-ans code {
+        background: rgba(255, 255, 255, 0.1);
+        color: #93c5fd;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      .faq-ans strong {
+        color: #ffffff;
+        font-weight: 600;
+      }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="antialiased bg-theme-dark">
+            <!-- Header with Brand on Left and Three Icons Menu Button on Right -->
+            <header class="sticky top-0 z-50 transition-all duration-300 bg-theme-dark/80 backdrop-blur-lg border-b border-white/10">
+                <nav>
+                    <div class="max-w-7xl mx-auto px-6">
+                        <div style="display: flex; align-items: center; justify-content: space-between; min-height: 68px;">
+                            <!-- Left: Logo with slight extra space after square -->
+                            <div style="display: flex; align-items: center;">
+                                <a href="/" style="display: flex; align-items: center; text-decoration: none;" class="group">
+                                    <svg width="20" height="20" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform group-hover:scale-105 duration-200">
+                                        <rect x="0.75" y="0.75" width="17.5" height="17.5" rx="4" stroke="white" stroke-width="1.5"/>
+                                    </svg>
+                                    <span style="color: #ffffff; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; line-height: 1; margin-left: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;">ChainSentry</span>
+                                    <span style="color: rgba(255, 255, 255, 0.6); font-weight: 400; font-size: 21px; line-height: 1; margin-left: 5px; font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;">AI</span>
+                                </a>
+                            </div>
+
+                            <!-- Right: Three Horizontal Lines Button (Triggers Large Vertical Navigation) -->
+                            <div style="display: flex; align-items: center;">
+                                <button id="nav-menu-btn" class="nav-menu-btn" aria-label="Open Navigation Menu">
+                                    <div class="hamburger-box">
+                                        <span class="hamburger-line"></span>
+                                        <span class="hamburger-line"></span>
+                                        <span class="hamburger-line"></span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Vertical Navigation Drawer (Cybersecurity Clean Minimal Nav) -->
+            <div id="nav-drawer" class="vertical-nav-drawer" aria-hidden="true">
+                <div id="nav-backdrop" class="vertical-nav-backdrop"></div>
+                <div class="vertical-nav-panel">
+                    <div class="vertical-nav-header">
+                        <a href="/" style="display: flex; align-items: center; text-decoration: none;">
+                            <svg width="18" height="18" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0.75" y="0.75" width="17.5" height="17.5" rx="4" stroke="white" stroke-width="1.5"/>
+                            </svg>
+                            <span style="color: #ffffff; font-weight: 700; font-size: 18px; margin-left: 10px; font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; letter-spacing: -0.02em;">ChainSentry</span>
+                            <span style="color: rgba(255, 255, 255, 0.5); font-weight: 400; font-size: 18px; margin-left: 5px; font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;">AI</span>
+                        </a>
+                        <button id="nav-close-btn" class="nav-close-btn" aria-label="Close Navigation">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="vertical-nav-body">
+                        <ul class="vertical-nav-list">
+                            <li class="vertical-nav-item">
+                                <a href="#capabilities" class="vertical-nav-link">
+                                    <span class="vertical-nav-text">Capabilities</span>
+                                    <svg class="vertical-nav-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </li>
+                            <li class="vertical-nav-item">
+                                <a href="#ecosystems" class="vertical-nav-link">
+                                    <span class="vertical-nav-text">Ecosystems</span>
+                                    <svg class="vertical-nav-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </li>
+                            <li class="vertical-nav-item">
+                                <a href="#use-cases" class="vertical-nav-link">
+                                    <span class="vertical-nav-text">Use Cases</span>
+                                    <svg class="vertical-nav-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </li>
+                            <li class="vertical-nav-item">
+                                <a href="#faq" class="vertical-nav-link">
+                                    <span class="vertical-nav-text">FAQ</span>
+                                    <svg class="vertical-nav-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="vertical-nav-footer">
+                        <div class="vertical-nav-meta">
+                            <span>Software Supply Chain Security</span>
+                            <span>•</span>
+                            <span>Developer First</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <section class="border-y border-white/20 overflow-hidden relative">
+                <div class="absolute left-1/2 -translate-x-1/2 pointer-events-none w-full h-full">
+                    <img class="w-full h-full" alt="" src="/images/Gradient.png">
+                </div>
+                <div class="max-w-7xl mx-auto px-6 relative z-20">
+                    <div class="border-x border-white/20 pt-6 xl:py-30">
+                        <div class="max-w-md lg:max-w-2xl xl:max-w-4xl mx-auto px-4 py-14 text-center">
+                            <h1 class="text-4xl lg:text-5xl -tracking-[1.5px] xl:text-6xl font-normal text-white text-center xl:leading-16 mb-6">
+                                Scan Smarter. Patch Faster.<br>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-blue-400">Secure Every Dependency.</span>
+                            </h1>
+                            <p class="text-white/80 text-base max-w-xl text-center mx-auto mb-8 xl:mb-12">
+                                Your all-in-one software supply chain security analyzer — identify risky dependencies, typosquatting indicators, build provenance flaws, and synthesize 1-click AI remediation patches.
+                            </p>
+                            <div class="flex justify-center items-center">
+                                <a href="/dashboard" class="scan-repo-btn">
+                                    Scan Repository &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Supported Ecosystems & Registries (Auto-Moving Marquee & Moving Scrollbar) -->
+            <section id="ecosystems" class="py-16">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div>
+                        <div class="max-w-2xl mx-auto text-center mb-12">
+                            <div class="inline-flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                                <span class="text-white/60 font-mono text-xs uppercase tracking-widest">ECOSYSTEMS</span>
+                            </div>
+                            <h2 class="text-3xl sm:text-4xl font-medium text-white tracking-tight mb-3">Supported Ecosystems &amp; Registries</h2>
+                            <p class="text-base text-white/70 leading-relaxed max-w-lg mx-auto">Scan dependencies across the ecosystems your projects use.</p>
+                        </div>
+
+                        <!-- Auto-moving continuous marquee -->
+                        <div class="marquee-wrapper">
+                            <div class="marquee-track">
+                                <!-- Set 1 -->
+                                <!-- 1. PyPI -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                            <path d="M11.91 1C6.27 1 6.64 3.45 6.64 3.45l.01 2.55h5.36v.76H4.25S1 6.38 1 12.04c0 5.65 2.84 5.45 2.84 5.45h1.7v-2.39s-.09-2.84 2.79-2.84h4.74s2.69.04 2.69-2.62V3.62S16.32 1 11.91 1zm-1.5 1.54a.97.97 0 1 1 0 1.94.97.97 0 0 1 0-1.94zm1.68 20.46c5.64 0 5.27-2.45 5.27-2.45l-.01-2.55h-5.36v-.76h7.76s3.25.38 3.25-5.28c0-5.65-2.84-5.45-2.84-5.45h-1.7v2.39s.09 2.84-2.79 2.84h-4.74s-2.69-.04-2.69 2.62v6.02s-.56 2.62 3.85 2.62zm1.5-1.54a.97.97 0 1 1 0-1.94.97.97 0 0 1 0 1.94z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">PyPI</div>
+                                    <div class="ecosystem-desc">Python Packages</div>
+                                    <span class="ecosystem-badge">Python</span>
+                                </div>
+
+                                <!-- 2. Go -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                            <path d="M1.98 12.63c0-3.32 2.37-6.07 5.76-6.07 2.14 0 3.73 1.05 4.6 2.53l-1.92 1.34c-.58-.94-1.48-1.52-2.68-1.52-2.02 0-3.41 1.63-3.41 3.72 0 2.09 1.39 3.72 3.41 3.72 1.37 0 2.31-.73 2.75-1.87h-2.9v-2.22h5.3v5.67h-2.18v-1.12c-.78.89-1.84 1.48-3.17 1.48-3.39 0-5.76-2.75-5.76-6.07zm14.47 0c0-3.32 2.45-6.07 5.86-6.07s5.86 2.75 5.86 6.07-2.45 6.07-5.86 6.07-5.86-2.75-5.86-6.07zm9.37 0c0-2.09-1.44-3.72-3.51-3.72s-3.51 1.63-3.51 3.72 1.44 3.72 3.51 3.72 3.51-1.63 3.51-3.72z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Go</div>
+                                    <div class="ecosystem-desc">Go Modules</div>
+                                    <span class="ecosystem-badge">go.mod / go.sum</span>
+                                </div>
+
+                                <!-- 3. Maven -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                            <line x1="6" y1="2" x2="6" y2="5"/>
+                                            <line x1="10" y1="2" x2="10" y2="5"/>
+                                            <line x1="14" y1="2" x2="14" y2="5"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Maven</div>
+                                    <div class="ecosystem-desc">Java Packages</div>
+                                    <span class="ecosystem-badge">pom.xml</span>
+                                </div>
+
+                                <!-- 4. Cargo -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Cargo</div>
+                                    <div class="ecosystem-desc">Rust Packages</div>
+                                    <span class="ecosystem-badge">Cargo</span>
+                                </div>
+
+                                <!-- 5. Packagist -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Packagist</div>
+                                    <div class="ecosystem-desc">PHP Packages</div>
+                                    <span class="ecosystem-badge">Composer</span>
+                                </div>
+
+                                <!-- 6. NuGet -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/>
+                                            <path d="M8 12h8M12 8v8"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">NuGet</div>
+                                    <div class="ecosystem-desc">.NET Packages</div>
+                                    <span class="ecosystem-badge">.NET / C#</span>
+                                </div>
+
+                                <!-- 7. RubyGems -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M6 3h12l4 6-10 12L2 9l4-6z"/>
+                                            <path d="M2 9h20M12 21 8 9l4-6 4 6-4 12z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">RubyGems</div>
+                                    <div class="ecosystem-desc">Ruby Packages</div>
+                                    <span class="ecosystem-badge">Gemfile</span>
+                                </div>
+
+                                <!-- 8. npm -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                            <path d="M1.5 8.25h21v7.5H12V18H7.5v-2.25H1.5V8.25zm16.5 6V9.75h-3v4.5h3zm-4.5-4.5h-1.5v4.5H12v-4.5zm-3 4.5h1.5V9.75H10.5v4.5zm-3-4.5H6v3H4.5V9.75H3v4.5h4.5V9.75z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">npm</div>
+                                    <div class="ecosystem-desc">JavaScript Packages</div>
+                                    <span class="ecosystem-badge">package.json</span>
+                                </div>
+
+                                <!-- Duplicate Set for Seamless Infinite Loop -->
+                                <!-- 1. PyPI -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                            <path d="M11.91 1C6.27 1 6.64 3.45 6.64 3.45l.01 2.55h5.36v.76H4.25S1 6.38 1 12.04c0 5.65 2.84 5.45 2.84 5.45h1.7v-2.39s-.09-2.84 2.79-2.84h4.74s2.69.04 2.69-2.62V3.62S16.32 1 11.91 1zm-1.5 1.54a.97.97 0 1 1 0 1.94.97.97 0 0 1 0-1.94zm1.68 20.46c5.64 0 5.27-2.45 5.27-2.45l-.01-2.55h-5.36v-.76h7.76s3.25.38 3.25-5.28c0-5.65-2.84-5.45-2.84-5.45h-1.7v2.39s.09 2.84-2.79 2.84h-4.74s-2.69-.04-2.69 2.62v6.02s-.56 2.62 3.85 2.62zm1.5-1.54a.97.97 0 1 1 0-1.94.97.97 0 0 1 0 1.94z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">PyPI</div>
+                                    <div class="ecosystem-desc">Python Packages</div>
+                                    <span class="ecosystem-badge">Python</span>
+                                </div>
+
+                                <!-- 2. Go -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                            <path d="M1.98 12.63c0-3.32 2.37-6.07 5.76-6.07 2.14 0 3.73 1.05 4.6 2.53l-1.92 1.34c-.58-.94-1.48-1.52-2.68-1.52-2.02 0-3.41 1.63-3.41 3.72 0 2.09 1.39 3.72 3.41 3.72 1.37 0 2.31-.73 2.75-1.87h-2.9v-2.22h5.3v5.67h-2.18v-1.12c-.78.89-1.84 1.48-3.17 1.48-3.39 0-5.76-2.75-5.76-6.07zm14.47 0c0-3.32 2.45-6.07 5.86-6.07s5.86 2.75 5.86 6.07-2.45 6.07-5.86 6.07-5.86-2.75-5.86-6.07zm9.37 0c0-2.09-1.44-3.72-3.51-3.72s-3.51 1.63-3.51 3.72 1.44 3.72 3.51 3.72 3.51-1.63 3.51-3.72z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Go</div>
+                                    <div class="ecosystem-desc">Go Modules</div>
+                                    <span class="ecosystem-badge">go.mod / go.sum</span>
+                                </div>
+
+                                <!-- 3. Maven -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                            <line x1="6" y1="2" x2="6" y2="5"/>
+                                            <line x1="10" y1="2" x2="10" y2="5"/>
+                                            <line x1="14" y1="2" x2="14" y2="5"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Maven</div>
+                                    <div class="ecosystem-desc">Java Packages</div>
+                                    <span class="ecosystem-badge">pom.xml</span>
+                                </div>
+
+                                <!-- 4. Cargo -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Cargo</div>
+                                    <div class="ecosystem-desc">Rust Packages</div>
+                                    <span class="ecosystem-badge">Cargo</span>
+                                </div>
+
+                                <!-- 5. Packagist -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">Packagist</div>
+                                    <div class="ecosystem-desc">PHP Packages</div>
+                                    <span class="ecosystem-badge">Composer</span>
+                                </div>
+
+                                <!-- 6. NuGet -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/>
+                                            <path d="M8 12h8M12 8v8"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">NuGet</div>
+                                    <div class="ecosystem-desc">.NET Packages</div>
+                                    <span class="ecosystem-badge">.NET / C#</span>
+                                </div>
+
+                                <!-- 7. RubyGems -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M6 3h12l4 6-10 12L2 9l4-6z"/>
+                                            <path d="M2 9h20M12 21 8 9l4-6 4 6-4 12z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">RubyGems</div>
+                                    <div class="ecosystem-desc">Ruby Packages</div>
+                                    <span class="ecosystem-badge">Gemfile</span>
+                                </div>
+
+                                <!-- 8. npm -->
+                                <div class="ecosystem-card">
+                                    <div class="ecosystem-icon-box">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                            <path d="M1.5 8.25h21v7.5H12V18H7.5v-2.25H1.5V8.25zm16.5 6V9.75h-3v4.5h3zm-4.5-4.5h-1.5v4.5H12v-4.5zm-3 4.5h1.5V9.75H10.5v4.5zm-3-4.5H6v3H4.5V9.75H3v4.5h4.5V9.75z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ecosystem-name">npm</div>
+                                    <div class="ecosystem-desc">JavaScript Packages</div>
+                                    <span class="ecosystem-badge">package.json</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Auto-moving visual scrollbar indicator -->
+                        <div class="moving-scrollbar-track">
+                            <div class="moving-scrollbar-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What You Get / Core Features Section -->
+            <section id="capabilities" class="border-y border-white/20 mb-20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="border-x border-white/20 p-6 sm:p-10 lg:p-16">
+                        <div class="max-w-2xl mb-12">
+                            <div class="inline-flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full bg-white"></span>
+                                <span class="text-white/80 font-mono text-xs uppercase tracking-widest">CORE FEATURES</span>
+                            </div>
+                            <h2 class="text-3xl sm:text-4xl lg:text-5xl mb-3 font-medium text-white tracking-tight">What You Get</h2>
+                            <p class="text-base sm:text-lg text-white/70 leading-relaxed">Powerful analysis. Clear insights. Actionable security.</p>
+                        </div>
+
+                        <!-- 2 Cards Per Row Desktop Grid -->
+                        <div class="feature-grid">
+                            <!-- Card 1: Dependency Vulnerability Detection -->
+                            <div class="feature-card">
+                                <div>
+                                    <div class="feature-icon-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                            <line x1="12" y1="8" x2="12" y2="12"/>
+                                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-card-title">Dependency Vulnerability Detection</h3>
+                                    <p class="feature-card-desc">Identify vulnerable direct and transitive dependencies and understand their severity.</p>
+                                </div>
+                                <a href="/dashboard" class="feature-card-link">
+                                    <span>Learn more</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+
+                            <!-- Card 2: Typosquatting Detection -->
+                            <div class="feature-card">
+                                <div>
+                                    <div class="feature-icon-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="11" cy="11" r="8"/>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                            <line x1="11" y1="8" x2="11" y2="11"/>
+                                            <line x1="11" y1="14" x2="11.01" y2="14"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-card-title">Typosquatting Detection</h3>
+                                    <p class="feature-card-desc">Detect lookalike package names that may indicate potential typosquatting risks.</p>
+                                </div>
+                                <a href="/dashboard" class="feature-card-link">
+                                    <span>Learn more</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+
+                            <!-- Card 3: Dependency Confusion Detection -->
+                            <div class="feature-card">
+                                <div>
+                                    <div class="feature-icon-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+                                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-card-title">Dependency Confusion Detection</h3>
+                                    <p class="feature-card-desc">Identify packages that could introduce dependency-confusion risks into your project.</p>
+                                </div>
+                                <a href="/dashboard" class="feature-card-link">
+                                    <span>Learn more</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+
+                            <!-- Card 4: Supply-Chain Risk Analysis -->
+                            <div class="feature-card">
+                                <div>
+                                    <div class="feature-icon-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-card-title">Supply-Chain Risk Analysis</h3>
+                                    <p class="feature-card-desc">Combine security signals to prioritize the dependencies that need attention first.</p>
+                                </div>
+                                <a href="/dashboard" class="feature-card-link">
+                                    <span>Learn more</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+
+                            <!-- Card 5: Dependency Graph -->
+                            <div class="feature-card">
+                                <div>
+                                    <div class="feature-icon-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="18" cy="5" r="3"/>
+                                            <circle cx="6" cy="12" r="3"/>
+                                            <circle cx="18" cy="19" r="3"/>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-card-title">Dependency Graph</h3>
+                                    <p class="feature-card-desc">Visualize direct and transitive dependencies to understand how risk spreads through your project.</p>
+                                </div>
+                                <a href="/dashboard" class="feature-card-link">
+                                    <span>Learn more</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+
+                            <!-- Card 6: Prioritized Remediation -->
+                            <div class="feature-card">
+                                <div>
+                                    <div class="feature-icon-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 11l3 3L22 4"/>
+                                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-card-title">Prioritized Remediation</h3>
+                                    <p class="feature-card-desc">Get clear, actionable recommendations for fixing the highest-risk dependencies first.</p>
+                                </div>
+                                <a href="/dashboard" class="feature-card-link">
+                                    <span>Learn more</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enterprise Core Capabilities (Terminal Accordion Trigger) -->
+            <section id="use-cases" class="border-y border-white/20 mb-20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="border-x border-white/20 py-8 lg:py-12 px-6 xl:px-14">
+                        
+                        <!-- Terminal-like Horizontal Structure -->
+                        <button id="capabilities-terminal-btn" type="button" class="capabilities-terminal-bar" aria-expanded="false" aria-controls="capabilities-expanded-content">
+                            <div class="terminal-bar-left">
+                                <div class="terminal-dots">
+                                    <span class="terminal-dot red"></span>
+                                    <span class="terminal-dot yellow"></span>
+                                    <span class="terminal-dot green"></span>
+                                </div>
+                                <div class="terminal-prompt">
+                                    <span class="terminal-dollar">$</span>
+                                    <span class="terminal-title">Core Capabilities</span>
+                                    <span class="terminal-cursor">_</span>
+                                </div>
+                            </div>
+                            <div class="terminal-bar-right">
+                                <span class="terminal-action-hint font-mono text-xs text-white/60">Click to expand</span>
+                                <svg class="terminal-chevron w-4 h-4 text-white/70 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </button>
+
+                        <!-- Collapsible Capabilities Content (Hidden by default, opens on click) -->
+                        <div id="capabilities-expanded-content" class="capabilities-content hidden pt-12">
+                            <div class="max-w-3xl mx-auto text-center mb-14">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/20 rounded-full mb-4">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                                    <span class="text-white/80 font-mono text-xs uppercase tracking-widest">ENTERPRISE DEFENSE</span>
+                                </div>
+                                <h2 class="text-3xl sm:text-4xl font-medium text-white tracking-tight mb-4">Core Capabilities</h2>
+                                <p class="text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">Everything you need to understand, detect, and prioritize software supply-chain risks.</p>
+                            </div>
+
+                            <!-- 6 Distinct Enterprise Cards 3x2 Grid on Desktop -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- 1. Monorepo & Polyglot Auditing -->
+                                <div class="usecase-card">
+                                    <div>
+                                        <div class="usecase-icon-box">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                                <polyline points="2 17 12 22 22 17"></polyline>
+                                                <polyline points="2 12 12 17 22 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <h3 class="usecase-card-title">Monorepo &amp; Polyglot Auditing</h3>
+                                        <p class="usecase-card-desc">Simultaneously discover direct and transitive dependencies across npm, PyPI, Go, Maven, Cargo, and Composer registries.</p>
+                                    </div>
+                                    <a href="/dashboard" class="usecase-link">
+                                        <span>Learn more</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+
+                                <!-- 2. Pre-Deployment CI/CD Gates -->
+                                <div class="usecase-card">
+                                    <div>
+                                        <div class="usecase-icon-box">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                                            </svg>
+                                        </div>
+                                        <h3 class="usecase-card-title">Pre-Deployment CI/CD Gates</h3>
+                                        <p class="usecase-card-desc">Enforce automated quality gate policies with deterministic exit codes 0/1 to block risky PR merges in GitHub Actions.</p>
+                                    </div>
+                                    <a href="/dashboard" class="usecase-link">
+                                        <span>Learn more</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+
+                                <!-- 3. Zero-Day Backdoor AST Detection -->
+                                <div class="usecase-card">
+                                    <div>
+                                        <div class="usecase-icon-box">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                                <path d="M9 12l2 2 4-4"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="usecase-card-title">Zero-Day Backdoor AST Detection</h3>
+                                        <p class="usecase-card-desc">Static AST inspection detects obfuscated setup.py reverse shells, raw socket calls, and malicious install-time hooks.</p>
+                                    </div>
+                                    <a href="/dashboard" class="usecase-link">
+                                        <span>Learn more</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+
+                                <!-- 4. Transitive Blast Radius Impact -->
+                                <div class="usecase-card">
+                                    <div>
+                                        <div class="usecase-icon-box">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="18" cy="5" r="3"/>
+                                                <circle cx="6" cy="12" r="3"/>
+                                                <circle cx="18" cy="19" r="3"/>
+                                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="usecase-card-title">Transitive Blast Radius Impact</h3>
+                                        <p class="usecase-card-desc">Topological NetworkX graph engine reveals multi-hop dependency depth and identifies which direct imports introduce CVEs.</p>
+                                    </div>
+                                    <a href="/dashboard" class="usecase-link">
+                                        <span>Learn more</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+
+                                <!-- 5. Obfuscated Lifecycle Script Audits -->
+                                <div class="usecase-card">
+                                    <div>
+                                        <div class="usecase-icon-box">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="4 17 10 11 4 5"></polyline>
+                                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                                            </svg>
+                                        </div>
+                                        <h3 class="usecase-card-title">Lifecycle Script Execution Audits</h3>
+                                        <p class="usecase-card-desc">Audit postinstall, preinstall, and build script triggers for remote curl, wget, base64 payloads, or binary execution.</p>
+                                    </div>
+                                    <a href="/dashboard" class="usecase-link">
+                                        <span>Learn more</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+
+                                <!-- 6. Gemini AI Threat Explanations -->
+                                <div class="usecase-card">
+                                    <div>
+                                        <div class="usecase-icon-box">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                                <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
+                                                <polyline points="7.5 19.79 7.5 14.6 3 12"/>
+                                                <polyline points="21 12 16.5 14.6 16.5 19.79"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="usecase-card-title">Gemini AI Threat Reasoning</h3>
+                                        <p class="usecase-card-desc">Google Gemini synthesizes plain-English risk narratives, attack vector proofs-of-concept, and 1-click unified Git diff patches.</p>
+                                    </div>
+                                    <a href="/dashboard" class="usecase-link">
+                                        <span>Learn more</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why DeepScan Section (Visibility -> Risk Understanding -> Action) -->
+            <section class="mb-14 border-y border-white/20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="py-14 lg:py-20">
+                        <div class="max-w-2xl mx-auto text-center mb-12">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/20 rounded-full mb-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                                <span class="text-white/80 font-mono text-xs uppercase tracking-widest">Why DeepScan</span>
+                            </div>
+                            <h2 class="text-3xl sm:text-4xl font-medium text-white tracking-tight mb-3">Security insights developers can act on</h2>
+                            <p class="text-base text-zinc-300 leading-relaxed max-w-xl mx-auto">DeepScan turns dependency data and supply-chain signals into clear, prioritized security findings.</p>
+                        </div>
+
+                        <!-- 3-Column Info Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Card 1: See Every Dependency -->
+                            <div class="why-card">
+                                <div>
+                                    <div class="flex items-center justify-between mb-5">
+                                        <div class="why-icon-box">
+                                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="18" cy="5" r="3"/>
+                                                <circle cx="6" cy="12" r="3"/>
+                                                <circle cx="18" cy="19" r="3"/>
+                                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                            </svg>
+                                        </div>
+                                        <span class="text-[11px] font-mono tracking-wider text-white bg-white/10 border border-white/20 px-2.5 py-1 rounded-full uppercase font-medium">Visibility</span>
+                                    </div>
+                                    <h3 class="why-card-title">See Every Dependency</h3>
+                                    <p class="why-card-desc">Discover direct and transitive dependencies and understand how they connect to your project.</p>
+                                </div>
+                                <div class="mt-6 pt-5 border-t border-white/10">
+                                    <div class="flex items-center justify-between text-[11px] font-mono bg-black/70 border border-white/20 rounded-lg py-2.5 px-3">
+                                        <span class="text-white font-medium">Repository</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="text-white/70 flex-shrink-0"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                        <span class="text-white font-semibold">Direct Deps</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="text-white/70 flex-shrink-0"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                        <span class="text-white/80 font-medium">Transitive</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Understand the Risk -->
+                            <div class="why-card">
+                                <div>
+                                    <div class="flex items-center justify-between mb-5">
+                                        <div class="why-icon-box">
+                                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                            </svg>
+                                        </div>
+                                        <span class="text-[11px] font-mono tracking-wider text-white bg-white/10 border border-white/20 px-2.5 py-1 rounded-full uppercase font-medium">Risk Analysis</span>
+                                    </div>
+                                    <h3 class="why-card-title">Understand the Risk</h3>
+                                    <p class="why-card-desc">Correlate vulnerabilities and supply-chain signals to identify which dependencies need attention first.</p>
+                                </div>
+                                <div class="mt-6 pt-5 border-t border-white/10">
+                                    <div class="grid grid-cols-4 gap-1.5 text-center text-[11px] font-mono">
+                                        <div class="py-2 px-1 rounded bg-red-950/70 border border-red-500/50 text-red-300 font-semibold flex items-center justify-center gap-1">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                                            <span>Critical</span>
+                                        </div>
+                                        <div class="py-2 px-1 rounded bg-orange-950/70 border border-orange-500/50 text-orange-300 font-semibold flex items-center justify-center gap-1">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+                                            <span>High</span>
+                                        </div>
+                                        <div class="py-2 px-1 rounded bg-amber-950/70 border border-amber-500/50 text-amber-300 font-semibold flex items-center justify-center gap-1">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                                            <span>Medium</span>
+                                        </div>
+                                        <div class="py-2 px-1 rounded bg-blue-950/70 border border-blue-500/50 text-blue-300 font-semibold flex items-center justify-center gap-1">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                            <span>Low</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Know What to Fix -->
+                            <div class="why-card">
+                                <div>
+                                    <div class="flex items-center justify-between mb-5">
+                                        <div class="why-icon-box">
+                                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span class="text-[11px] font-mono tracking-wider text-white bg-white/10 border border-white/20 px-2.5 py-1 rounded-full uppercase font-medium">Action</span>
+                                    </div>
+                                    <h3 class="why-card-title">Know What to Fix</h3>
+                                    <p class="why-card-desc">Get prioritized remediation guidance instead of a long list of security alerts.</p>
+                                </div>
+                                <div class="mt-6 pt-5 border-t border-white/10">
+                                    <div class="flex items-center justify-between text-[11px] font-mono bg-black/70 border border-white/20 rounded-lg py-2.5 px-3">
+                                        <span class="text-amber-300 font-semibold">Risk detected</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="text-white/70 flex-shrink-0"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                        <span class="text-white font-semibold">Priority</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="text-white/70 flex-shrink-0"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                        <span class="text-emerald-400 font-semibold">Action</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section (Classic WriteMate Layout with Proper Answer Boxes) -->
+            <section id="faq" class="border-y border-white/20 mb-20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="border-x border-white/20 p-5 lg:p-20">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-28">
+                            <!-- Left Column: Headline & Subtitle -->
+                            <div class="mb-10 lg:mb-0">
+                                <h2 class="text-3xl sm:text-4xl mb-6 font-medium text-white tracking-tight">Frequently Asked Questions</h2>
+                                <p class="text-base text-white/80 mb-6 leading-relaxed">
+                                    Find answers to common questions about ChainSentry AI. If you can't find what you're looking for, explore our documentation or start a scan.
+                                </p>
+                            </div>
+
+                            <!-- Right Column: FAQ Accordion List -->
+                            <div>
+                                <!-- Question 1: What is ChainSentry? -->
+                                <div class="py-6 border-b border-white/10 faq-item">
+                                    <button class="faq-btn flex w-full text-left cursor-pointer items-center justify-between" aria-expanded="false">
+                                        <h3 class="text-lg text-zinc-50 -tracking-[0.18px] pr-4">What is ChainSentry?</h3>
+                                        <span class="text-white/80 transition-transform duration-200 faq-arrow flex-shrink-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5.75 9.625L12 15.875L18.25 9.625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        </span>
+                                    </button>
+                                    <div class="faq-ans text-zinc-300 text-sm mt-3 leading-relaxed hidden">
+                                        ChainSentry AI is an automated, zero-code-execution Software Supply Chain Security Analyzer and Remediation Engine. It statically inspects polyglot source code and dependency manifests to identify direct and transitive CVE vulnerabilities, typosquatting indicators, build provenance flaws, and calculates mathematical blast radius across services, while generating 1-click AI remediation patches.
+                                    </div>
+                                </div>
+
+                                <!-- Question 2: How does ChainSentry calculate the Blast Radius? -->
+                                <div class="py-6 border-b border-white/10 faq-item">
+                                    <button class="faq-btn flex w-full text-left cursor-pointer items-center justify-between" aria-expanded="false">
+                                        <h3 class="text-lg text-zinc-50 -tracking-[0.18px] pr-4">How does ChainSentry calculate the Blast Radius?</h3>
+                                        <span class="text-white/80 transition-transform duration-200 faq-arrow flex-shrink-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5.75 9.625L12 15.875L18.25 9.625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        </span>
+                                    </button>
+                                    <div class="faq-ans text-zinc-300 text-sm mt-3 leading-relaxed hidden">
+                                        ChainSentry constructs a full Directed Acyclic Graph (DAG) using NetworkX from your project manifests. When a vulnerable or poisoned package is detected, the engine executes recursive topological traversal to trace all upstream parent services and downstream dependents. An exact <strong>Blast Radius Impact Score (0.10 to 1.00)</strong> is computed based on transitive nesting depth, reverse dependency density, and critical-path reachability.
+                                    </div>
+                                </div>
+
+                                <!-- Question 3: How does ChainSentry ensure Zero Code Execution? -->
+                                <div class="py-6 border-b border-white/10 faq-item">
+                                    <button class="faq-btn flex w-full text-left cursor-pointer items-center justify-between" aria-expanded="false">
+                                        <h3 class="text-lg text-zinc-50 -tracking-[0.18px] pr-4">How does ChainSentry ensure Zero Code Execution?</h3>
+                                        <span class="text-white/80 transition-transform duration-200 faq-arrow flex-shrink-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5.75 9.625L12 15.875L18.25 9.625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        </span>
+                                    </button>
+                                    <div class="faq-ans text-zinc-300 text-sm mt-3 leading-relaxed hidden">
+                                        Traditional dependency audit tools often invoke package manager CLI commands that execute arbitrary dynamic lifecycle scripts (such as <code>postinstall</code> in npm or <code>setup.py</code> in Python), exposing the host machine to immediate remote code execution or credential harvesting. ChainSentry guarantees <strong>100% safety through static Abstract Syntax Tree (AST) parsing and deterministic manifest deserialization</strong>, never executing <code>npm install</code>, <code>pip install</code>, or arbitrary setup hooks.
+                                    </div>
+                                </div>
+
+                                <!-- Question 4: Which package ecosystems are supported? -->
+                                <div class="py-6 border-b border-white/10 faq-item">
+                                    <button class="faq-btn flex w-full text-left cursor-pointer items-center justify-between" aria-expanded="false">
+                                        <h3 class="text-lg text-zinc-50 -tracking-[0.18px] pr-4">Which package ecosystems are supported?</h3>
+                                        <span class="text-white/80 transition-transform duration-200 faq-arrow flex-shrink-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5.75 9.625L12 15.875L18.25 9.625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        </span>
+                                    </button>
+                                    <div class="faq-ans text-zinc-300 text-sm mt-3 leading-relaxed hidden">
+                                        ChainSentry delivers simultaneous, first-class polyglot inspection across <strong>8 major package ecosystems</strong>: <strong>npm</strong> (JavaScript &amp; TypeScript), <strong>PyPI</strong> (Python), <strong>Go</strong> (go.mod, go.sum), <strong>Maven</strong> (Java pom.xml &amp; Gradle), <strong>Cargo</strong> (Rust Cargo.toml &amp; lock), <strong>Packagist</strong> (PHP Composer), <strong>NuGet</strong> (.NET / C#), and <strong>RubyGems</strong> (Ruby Gemfile). Monorepos with multiple languages are scanned concurrently.
+                                    </div>
+                                </div>
+
+                                <!-- Question 5: What if Gemini API key is not configured? -->
+                                <div class="py-6 border-b border-white/10 faq-item">
+                                    <button class="faq-btn flex w-full text-left cursor-pointer items-center justify-between" aria-expanded="false">
+                                        <h3 class="text-lg text-zinc-50 -tracking-[0.18px] pr-4">What if Gemini API key is not configured?</h3>
+                                        <span class="text-white/80 transition-transform duration-200 faq-arrow flex-shrink-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5.75 9.625L12 15.875L18.25 9.625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        </span>
+                                    </button>
+                                    <div class="faq-ans text-zinc-300 text-sm mt-3 leading-relaxed hidden">
+                                        <strong>ChainSentry is fully functional offline without any AI API key.</strong> All deterministic security features — static AST parsing, live OSV.dev and GHSA advisory matching, NetworkX DAG blast radius graphing, typosquatting heuristic detection, and P0–P3 risk gating — run autonomously and deterministically on your local system. When a Google Gemini API key is configured, it unlocks optional generative capabilities: plain-English vulnerability explainers, real-world attack scenario simulations, and 1-click automated unified Git diff patch synthesis.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Call to Action Section -->
+            <section class="bottom-cta-section">
+                <div class="bottom-cta-container">
+                    <h2 class="bottom-cta-heading">Ready to secure your software supply chain?</h2>
+                    <p class="bottom-cta-subtext">Analyze your repositories, discover hidden blast radius threats, and generate 1-click Git patches in seconds.</p>
+                    <div class="bottom-cta-buttons">
+                        <a href="/dashboard" class="scan-repo-btn">
+                            Scan Repository &rarr;
+                        </a>
+                        <a href="/docs" target="_blank" class="cta-secondary-btn">
+                            API Documentation
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="site-footer-inner">
+                    <div class="footer-nav-grid">
+                        <article class="footer-col">
+                            <h3 class="footer-col-title">Product</h3>
+                            <nav class="footer-col-nav">
+                                <a class="footer-nav-link" href="/dashboard">Scanner Dashboard</a>
+                                <a class="footer-nav-link" href="/docs">API Reference</a>
+                                <a class="footer-nav-link" href="#ecosystems">Supported Registries</a>
+                            </nav>
+                        </article>
+                        <article class="footer-col">
+                            <h3 class="footer-col-title">Capabilities</h3>
+                            <nav class="footer-col-nav">
+                                <a class="footer-nav-link" href="#capabilities">Blast Radius Analysis</a>
+                                <a class="footer-nav-link" href="#capabilities">Zero-Day Shield</a>
+                                <a class="footer-nav-link" href="#use-cases">Git Diff Patches</a>
+                            </nav>
+                        </article>
+                        <article class="footer-col">
+                            <h3 class="footer-col-title">Security</h3>
+                            <nav class="footer-col-nav">
+                                <a class="footer-nav-link" href="#use-cases">Static AST Engine</a>
+                                <a class="footer-nav-link" href="#faq">Zero Code Execution</a>
+                                <a class="footer-nav-link" href="#use-cases">GHSA Correlation</a>
+                            </nav>
+                        </article>
+                        <article class="footer-col">
+                            <h3 class="footer-col-title">Platform</h3>
+                            <nav class="footer-col-nav">
+                                <a class="footer-nav-link" href="/">Home</a>
+                                <a class="footer-nav-link" href="/dashboard">Launch Scanner</a>
+                                <a class="footer-nav-link" href="/docs">OpenAPI Schema</a>
+                            </nav>
+                        </article>
+                    </div>
+                    <div class="footer-bottom-bar">
+                        <p class="footer-bottom-copy">&copy; 2026 ChainSentry AI. All rights reserved.</p>
+                        <p class="footer-bottom-sub">Polyglot Software Supply Chain Defense &middot; Static Analysis Only &middot; Zero Code Execution</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts for Interactive Carousel & FAQs -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Classic FAQ Accordion Controls
+        const faqBtns = document.querySelectorAll(".faq-btn");
+        faqBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const item = btn.closest(".faq-item");
+                if (!item) return;
+                const ans = item.querySelector(".faq-ans");
+                const arrow = btn.querySelector(".faq-arrow");
+                if (!ans) return;
+
+                const isHidden = ans.classList.contains("hidden");
+
+                // Close all other FAQs
+                document.querySelectorAll(".faq-item").forEach(other => {
+                    if (other !== item) {
+                        const otherAns = other.querySelector(".faq-ans");
+                        const otherArrow = other.querySelector(".faq-arrow");
+                        const otherBtn = other.querySelector(".faq-btn");
+                        if (otherAns) otherAns.classList.add("hidden");
+                        if (otherArrow) otherArrow.style.transform = "rotate(0deg)";
+                        if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+                    }
+                });
+
+                // Toggle current FAQ
+                if (isHidden) {
+                    ans.classList.remove("hidden");
+                    if (arrow) arrow.style.transform = "rotate(180deg)";
+                    btn.setAttribute("aria-expanded", "true");
+                } else {
+                    ans.classList.add("hidden");
+                    if (arrow) arrow.style.transform = "rotate(0deg)";
+                    btn.setAttribute("aria-expanded", "false");
+                }
+            });
+        });
+
+
+
+        // 3. Vertical Navigation Drawer Controls
+        const navMenuBtn = document.getElementById("nav-menu-btn");
+        const navDrawer = document.getElementById("nav-drawer");
+        const navCloseBtn = document.getElementById("nav-close-btn");
+        const navBackdrop = document.getElementById("nav-backdrop");
+        const verticalNavLinks = document.querySelectorAll(".vertical-nav-link");
+
+        function openNavDrawer() {
+            if (navDrawer) {
+                navDrawer.classList.add("active");
+                navDrawer.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+            }
+        }
+
+        function closeNavDrawer() {
+            if (navDrawer) {
+                navDrawer.classList.remove("active");
+                navDrawer.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+        }
+
+        if (navMenuBtn) {
+            navMenuBtn.addEventListener("click", openNavDrawer);
+        }
+        if (navCloseBtn) {
+            navCloseBtn.addEventListener("click", closeNavDrawer);
+        }
+        if (navBackdrop) {
+            navBackdrop.addEventListener("click", closeNavDrawer);
+        }
+
+        verticalNavLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                closeNavDrawer();
+            });
+        });
+
+        // 4. Interactive Terminal Horizontal Bar Trigger for Core Capabilities
+        const terminalBtn = document.getElementById("capabilities-terminal-btn");
+        const terminalContent = document.getElementById("capabilities-expanded-content");
+        const terminalHint = terminalBtn ? terminalBtn.querySelector(".terminal-action-hint") : null;
+
+        if (terminalBtn && terminalContent) {
+            terminalBtn.addEventListener("click", () => {
+                const isExpanded = terminalBtn.getAttribute("aria-expanded") === "true";
+                if (isExpanded) {
+                    terminalBtn.setAttribute("aria-expanded", "false");
+                    terminalContent.classList.remove("is-open");
+                    terminalContent.classList.add("hidden");
+                    if (terminalHint) terminalHint.textContent = "Click to expand";
+                } else {
+                    terminalBtn.setAttribute("aria-expanded", "true");
+                    terminalContent.classList.remove("hidden");
+                    terminalContent.classList.add("is-open");
+                    if (terminalHint) terminalHint.textContent = "Click to collapse";
+                }
+            });
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeNavDrawer();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
