@@ -1,4 +1,4 @@
-﻿"""
+"""
 Tests for Centralized Global Error Handling in FastAPI.
 
 Verifies:
@@ -89,7 +89,7 @@ def trigger_not_found():
 def trigger_leak_simulation():
     # Attempt to raise an error containing sensitive local file path and secret token
     raise ChainSentryError(
-        message="Failed loading C:\\Users\\athar\\secret\\config.json with token ghp_123456789012345678901234567890AB",
+        message="Failed loading C:\\\\Users\\\\testuser\\\\secret\\config.json with token ghp_123456789012345678901234567890AB",
         code="LOAD_ERROR",
         status_code=400,
     )
@@ -214,7 +214,7 @@ def test_path_and_secret_sanitization():
     data = response.json()
 
     message = data["error"]["message"]
-    assert "C:\\Users\\athar" not in message
+    assert "C:\\\\Users\\\\testuser" not in message
     assert "ghp_123456789012345678901234567890AB" not in message
     assert "[internal_path]" in message or "[REDACTED_SECRET]" in message
 

@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    ChainSentry Landing Page — WriteMate AI Design System Theme
    Pitch-Black (#050505) + Crisp White + Ambient Royal Blue Lighting
    ========================================================================== */
@@ -1027,7 +1027,7 @@ body {
     line-height: 1.55;
 }
 
-.footer-hackathon-badge {
+.footer-project-badge {
     align-self: flex-start;
     font-family: var(--font-mono);
     font-size: 0.68rem;

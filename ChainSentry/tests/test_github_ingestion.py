@@ -80,7 +80,7 @@ def test_reject_local_filesystem_paths():
     """Verify local filesystem path inputs are strictly rejected."""
     local_paths = [
         "file:///etc/passwd",
-        "C:\\Users\\athar\\repo",
+        "C:\\\\Users\\\\testuser\\\\repo",
         "c:/projects/myrepo",
         "/var/repos/target",
         "../../my-repo",

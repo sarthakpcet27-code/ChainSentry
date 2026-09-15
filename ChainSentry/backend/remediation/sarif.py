@@ -1,4 +1,4 @@
-﻿"""
+"""
 SARIF v2.1.0 Report Generator for GitHub Code Scanning Integration.
 
 Transforms ChainSentry security findings into standard SARIF (Static Analysis Results Interchange Format)
@@ -104,7 +104,7 @@ def generate_sarif_report(scan_data: Dict[str, Any]) -> Dict[str, Any]:
                         "name": "ChainSentry",
                         "organization": "ChainSentry Security",
                         "version": "1.0.0",
-                        "informationUri": "https://github.com/Atharvchaskar008/Kurukshetra-hackathon",
+                        "informationUri": "https://github.com/your-org/chainsentry",
                         "rules": list(rules.values()),
                     }
                 },
