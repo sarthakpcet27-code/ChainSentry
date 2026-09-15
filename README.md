@@ -86,7 +86,7 @@ Repository (GitHub URL / ZIP / Local Path)
 ### Install
 
 ```bash
-git clone https://github.com/your-org/chainsentry.git
+git clone https://github.com/sarthakpcet27-code/ChainSentry.git/chainsentry.git
 cd chainsentry
 pip install -r requirements.txt
 ```
